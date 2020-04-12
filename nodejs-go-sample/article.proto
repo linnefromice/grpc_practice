@@ -1,0 +1,21 @@
+syntax = "proto3";
+
+package article;
+
+service ArticleService {
+  rpc First (Empty) returns (Article) {}
+  rpc Post (Article) returns (Empty) {}
+}
+
+message Empty {}
+
+message Article {
+  int32 id = 1;
+  string title = 2;
+  string content = 3;
+  enum Status {
+    DRAFT = 0;
+    PUBLISH = 1;
+  }
+  Status status = 4;
+}
